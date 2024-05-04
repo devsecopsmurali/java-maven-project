@@ -41,7 +41,7 @@ pipeline {
           -Dsonar.projectVersion=1.0 \
 		  -Dsonar.sources=src/main/java \
 		  -Dsonar.projectName='java_maven_project'
-          -Dsonar.login=sqa_ef1d9fda4dcd0f22ddf6e93c6afc5af7d9b9396b
+          -Dsonar.login=sqp_480292feba61adac634795e849a5cdd6d76c611b
       '''
     }
   }
