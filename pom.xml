@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mkyong.hashing</groupId>
-    <artifactId>Cherry</artifactId>
+    <artifactId>Venkat</artifactId>
     <packaging>war</packaging>
-    <version>1.1.0</version>
+    <version>1.2.0-SNAPSHOT</version>
     <name>cherry-nch</name>
     <url>http://maven.apache.org</url>
 
@@ -30,6 +30,20 @@
             <artifactId>commons-codec</artifactId>
             <version>1.11</version>
         </dependency>
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>4.0.1</version>
+    <scope>provided</scope>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
+<dependency>
+    <groupId>org.hibernate.orm</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>7.0.0.Alpha1</version>
+</dependency>
+
     </dependencies>
     <build>
         <plugins>
