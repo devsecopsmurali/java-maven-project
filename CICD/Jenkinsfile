@@ -1,7 +1,8 @@
 pipeline {
     agent any
 	environment{
-        NEXUS_RELEASE_REPO ="mylibs-Release"
+        //NEXUS_RELEASE_REPO ="mylibs-Release"
+        NEXUS_RELEASE_REPO ="nch-cherry-libs-Release"
         NEXUS_SNAP_REPO="mylibs-Snapshot"
         NEXUS_CENTRAL_REPO ="mylibs-maven-central"
         NEXUS_GRP_REPO="mylibs-Group"
