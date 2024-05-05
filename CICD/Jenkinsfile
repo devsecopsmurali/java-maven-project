@@ -3,7 +3,8 @@ pipeline {
 	environment{
         //NEXUS_RELEASE_REPO ="mylibs-Release"
         NEXUS_RELEASE_REPO ="nch-cherry-libs-Release"
-        NEXUS_SNAP_REPO="mylibs-Snapshot"
+        //NEXUS_SNAP_REPO="mylibs-Snapshot"
+        NEXUS_SNAP_REPO="nch-cherry-libs-snapshot"
         NEXUS_CENTRAL_REPO ="mylibs-maven-central"
         NEXUS_GRP_REPO="mylibs-Group"
         NEXUS_USER="admin"
@@ -46,8 +47,8 @@ pipeline {
                             nexusUrl: NEXUS_URL,
                             groupId: pom.groupId,
                             version: pom.version,
-                            repository: NEXUS_RELEASE_REPO,
-							//repository: NEXUS_SNAP_REPO,
+                            //repository: NEXUS_RELEASE_REPO,
+							repository: NEXUS_SNAP_REPO,
                             credentialsId: NEXUS_CREDENTIAL_ID,
                             artifacts: [
                                 [artifactId: pom.artifactId,
