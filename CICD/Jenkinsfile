@@ -25,6 +25,24 @@ pipeline {
               git branch: 'main', url: 'https://github.com/devsecopsmurali/java-maven-project.git'
            }
         }
+
+        		stage('SonarQube Analysis') {
+  environment {
+    scannerHome = tool("${SONARSCANNER}") 
+  }
+  steps {
+    script {
+      sh '''
+        mvn clean verify sonar:sonar \
+          -Dsonar.projectKey=java_maven_project \
+		  -Dsonar.host.url=http://52.201.154.204:9000/ \
+          -Dsonar.projectVersion=1.0 \
+		  -Dsonar.sources=src/main/java \
+		  -Dsonar.projectName='java_maven_project'
+      '''
+    }
+  }
+}
         stage('Build') { 
             steps {
                   sh 'mvn -s settings.xml -DskipTests  clean install package'
