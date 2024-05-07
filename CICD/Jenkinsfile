@@ -26,6 +26,12 @@ pipeline {
            }
         }
 
+        stage('Build') { 
+            steps {
+                  sh 'mvn -s settings.xml -DskipTests  clean install package'
+            }
+        }
+
         		stage('SonarQube Analysis') {
   environment {
     scannerHome = tool("${SONARSCANNER}") 
@@ -36,16 +42,13 @@ pipeline {
                sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=java_maven_project \
                    -Dsonar.projectName=java_maven_project \
                    -Dsonar.projectVersion=1.0 \
-                   -Dsonar.sources=src/ '''
+                   -Dsonar.sources=src/ \
+                   -Dsonar.java.binaries=target/classes'''
             }
 
     }
 }
-        stage('Build') { 
-            steps {
-                  sh 'mvn -s settings.xml -DskipTests  clean install package'
-            }
-        }
+        
 
 		 stage("Publish to Nexus Repository Manager") {
             steps {
