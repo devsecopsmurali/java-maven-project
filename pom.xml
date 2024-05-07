@@ -6,7 +6,7 @@
     <groupId>com.mkyong.hashing</groupId>
     <artifactId>Cherry</artifactId>
     <packaging>war</packaging>
-    <version>1.1.0-SNAPSHOT</version>
+    <version>1.2.0-SNAPSHOT</version>
     <name>cherry-nch</name>
     <url>http://maven.apache.org</url>
 
