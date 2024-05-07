@@ -17,5 +17,8 @@ public class App {
     public static String sha256hex(String input) {
         return DigestUtils.sha256Hex(input);
     }
+     public static String sha256heex(String input) {
+        return DigestUtils.sha256Hex(input);
+    }
 
 }
