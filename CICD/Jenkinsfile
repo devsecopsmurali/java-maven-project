@@ -32,24 +32,30 @@ pipeline {
             }
         }
 
-        		stage('SonarQube Analysis') {
-  environment {
-    scannerHome = tool("${SONARSCANNER}") 
-  }
-
-    steps {
-            withSonarQubeEnv('sonarserver') {
-               sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=java_maven_project \
-                   -Dsonar.projectName=java_maven_project \
-                   -Dsonar.projectVersion=1.0 \
-                   -Dsonar.sources=src/ \
-                   -Dsonar.java.binaries=target/classes'''
+        stage('SonarQube Analysis') {
+            environment {
+                scannerHome = tool("${SONARSCANNER}") 
             }
 
-    }
-}
-        
+            steps {
+                    withSonarQubeEnv('sonarserver') {
+                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=java_maven_project \
+                        -Dsonar.projectName=java_maven_project \
+                        -Dsonar.projectVersion=1.0 \
+                        -Dsonar.sources=src/ \
+                        -Dsonar.java.binaries=target/classes'''
+                    } 
 
+            }
+        }
+        stage('Quality Gate') {
+            steps {
+                timeout(time: 10, unit: 'MINUTES') {
+                            waitForQualityGate abortPipeline: true
+                            }
+                }
+        
+        }
 		 stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
