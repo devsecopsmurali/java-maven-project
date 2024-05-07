@@ -39,7 +39,7 @@ pipeline {
                    -Dsonar.sources=src/ '''
             }
 
-  
+    }
 }
         stage('Build') { 
             steps {
