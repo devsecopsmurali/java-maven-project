@@ -95,6 +95,14 @@ pipeline {
         
 
     }
+
+     stage('Build Docker Image') {
+            steps {
+                // Build the Docker image using the Dockerfile in the workspace
+               sh 'docker build -t my-image-name -f Dockerfile .' 
+                sh ls -al
+            }
+        }
  
     }
 }
