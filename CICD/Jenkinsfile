@@ -12,10 +12,10 @@ pipeline {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUSPORT="8081"
-        NEXUSIP = "100.25.24.54"
+        NEXUSIP = "54.236.28.104"
         ARTVERSION = "${env.BUILD_ID}"
         NEXUS_CREDENTIAL_ID ="nexus-credentials"
-		NEXUS_URL = "100.25.24.54:8081"
+		NEXUS_URL = "54.236.28.104:8081"
 		SONARSERVER="sonarserver"
         SONARSCANNER="sonarscanner"
     }
