@@ -5,7 +5,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 public class App {
 
     public static void main(String[] args) {
-
+        System.out.println("Docker file creation");
         if (args.length < 1) {
             System.err.println("Please provide an input!");
             System.exit(0);
