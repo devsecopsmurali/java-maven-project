@@ -8,7 +8,7 @@ WORKDIR /javaapp
 COPY target/*.war .
 
 # Compile the Java program
-RUN javac App.java
+#RUN javac App.java
 
 # Set the default command to run the Java program
-CMD ["java", "App"]
+CMD ["java"]
