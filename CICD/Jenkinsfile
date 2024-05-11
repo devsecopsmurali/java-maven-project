@@ -108,10 +108,12 @@ pipeline {
     
      stage('Login to Docker Hub') {         
       steps{  
-        sh 'docker push 746982785361.dkr.ecr.us-east-1.amazonaws.com/test:my-image-name:latest'                          
-	    // sh 'docker push 746982785361.dkr.ecr.us-east-1.amazonaws.com/test'                 
+        sh 'docker tag my-local-image:latest 746982785361.dkr.ecr.us-east-1.amazonaws.com/test:latest'                          
+	     sh 'docker push 746982785361.dkr.ecr.us-east-1.amazonaws.com/test:latest'                 
 	    echo 'Login Completed' 
      
+
+
 
                   
       }           
