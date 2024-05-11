@@ -106,31 +106,17 @@ pipeline {
             }
         }
     
-    //  stage('Login to Docker Hub') {         
-    //   steps{  
-    //     sh 'docker tag latest 746982785361.dkr.ecr.us-east-1.amazonaws.com/test'                          
-	//     sh 'docker push 746982785361.dkr.ecr.us-east-1.amazonaws.com/test'                 
-	//     echo 'Login Completed' 
+     stage('Login to Docker Hub') {         
+      steps{  
+        sh 'docker push 746982785361.dkr.ecr.us-east-1.amazonaws.com/test:my-image-name:latest'                          
+	    // sh 'docker push 746982785361.dkr.ecr.us-east-1.amazonaws.com/test'                 
+	    echo 'Login Completed' 
      
 
                   
-    //   }           
-    // }  
+      }           
+    }  
 
-stage('Push to ECR') {
-  steps {
-    // Login to ECR using AWS credentials (replace with your credentials ID)
-    withCredentials([usernamePassword(credentialsId: 'AWS', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-      sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR_URI'
-    }
-
-    // Assuming the image is built in a previous stage (replace with your actual image name)
-    def image = sh(script: 'echo my-image-name', returnStdout: true).trim()
-
-    // Push the image to ECR (replace with your actual ECR repository URI)
-    sh "docker push $ECR_URI:$image"  // Or use a dynamic tag like $ARTVERSION
-  }
-}
 
  }
 
