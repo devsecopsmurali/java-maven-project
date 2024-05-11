@@ -108,7 +108,7 @@ pipeline {
     
      stage('Login to Docker Hub') {         
       steps{                            
-	    sh 'docker push 746982785361.dkr.ecr.us-east-1.amazonaws.com/test:latest'                 
+	    sh 'docker push 746982785361.dkr.ecr.us-east-1.amazonaws.com/test'                 
 	    echo 'Login Completed' 
                   
       }           
