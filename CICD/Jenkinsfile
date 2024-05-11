@@ -106,7 +106,7 @@ pipeline {
             }
         }
  
-    }
+    
     stage('Push Docker Image') {
             steps {
                docker.withRegistry("https://746982785361.dkr.ecr.us-east-1.amazonaws.com/test", "ecr:us-east-1:AWS") {
