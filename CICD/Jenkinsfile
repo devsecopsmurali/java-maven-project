@@ -105,19 +105,14 @@ pipeline {
                sh 'docker build -t my-image-name -f Dockerfile .'
             }
         }
- 
     
-    stage('Push Docker Image') {
-            steps {
-               docker.withRegistry("https://746982785361.dkr.ecr.us-east-1.amazonaws.com/test", "ecr:us-east-1:AWS") {
-               docker.image("my-image-name").push()
-               //public.ecr.aws/n2y4m4n9/my_images
-               ///test
-               
-            }
-        }
- 
-    }
+     stage('Login to Docker Hub') {         
+      steps{                            
+	    sh ' docker push 746982785361.dkr.ecr.us-east-1.amazonaws.com/test:latest'                 
+	    echo 'Login Completed' 
+                  
+      }           
+    }  
 
  }
 
