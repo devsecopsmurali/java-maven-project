@@ -17,7 +17,10 @@ pipeline {
         NEXUS_CREDENTIAL_ID ="nexus-credentials"
 		NEXUS_URL = "54.236.28.104:8081"
 		SONARSERVER="sonarserver"
-        SONARSCANNER="sonarscanner"
+        SONARSCANNER="sonarscanner" 
+        AWS_ACCESS_KEY_ID = credentials('AWS')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS')
+    
     }
  stages {
         stage('Checkout') {
@@ -99,10 +102,21 @@ pipeline {
      stage('Build Docker Image') {
             steps {
                 // Build the Docker image using the Dockerfile in the workspace
-               sh 'docker build -t my-image-name -f Dockerfile .' 
-                sh ls -al
+               sh 'docker build -t my-image-name -f Dockerfile .'
             }
         }
  
     }
+    stage('Push Docker Image') {
+            steps {
+               docker.withRegistry("https://7746982785361.dkr.ecr.us-east-2.amazonaws.com'", "ecr:us-east-1:AWS") {
+               docker.image("my-image-name").push()
+               
+            }
+        }
+ 
+    }
+
+   
+}
 }
